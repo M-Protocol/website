@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Ghost Protocol is an offline Android vault disguised as one of 21 everyday apps, built for people whose phone may be checked or taken.">
+<title>Ghost Protocol</title>
+<link rel="canonical" href="https://m-software.tech/">
+<meta name="theme-color" content="#0a1114">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ghost Protocol">
+<meta property="og:title" content="Ghost Protocol: looks like a calculator, keeps your secrets">
+<meta property="og:description" content="An offline vault for Android, hidden inside 21 everyday apps. Decoy vaults, apps that vanish with one code, and nothing ever sent online.">
+<meta property="og:url" content="https://m-software.tech/">
+<meta property="og:image" content="https://m-software.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A phone showing a calculator, next to the words: Looks like a Calculator. Keeps your secrets.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ghost Protocol: looks like a calculator, keeps your secrets">
+<meta name="twitter:description" content="An offline vault for Android, hidden inside 21 everyday apps. Decoy vaults, apps that vanish with one code, and nothing ever sent online.">
+<meta name="twitter:image" content="https://m-software.tech/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=6">
+<script src="site.js?v=7" defer></script>
+</head>
+<body>
+
+<!-- Icon set, drawn for this site -->
+<svg width="0" height="0" class="sprite" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h5v-6h4v6h5V10"/></symbol>
+    <symbol id="i-press" viewBox="0 0 24 24"><path d="M4 5h12v14H6a2 2 0 0 1-2-2z"/><path d="M16 9h4v8a2 2 0 0 1-2 2h-2"/><path d="M7 9h6M7 12h6M7 15h4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3.2 3.2 3.2 14.8 0 18M12 3c-3.2 3.2-3.2 14.8 0 18"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.2 3.6-7 8-7s8 2.8 8 7"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h9M8.5 3v2M6 9c1 2.6 3.3 4.6 6 5.6M11 5c-1 4-3 7-6 9"/><path d="M13 21l4-9 4 9M14.4 18h5.2"/></symbol>
+    <symbol id="i-offline" viewBox="0 0 24 24"><path d="M3 3l18 18"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M5 12.6a10 10 0 0 1 4.5-2.4M14.5 10.2A10 10 0 0 1 19 12.6"/><path d="M2 8.8a15 15 0 0 1 4-2.4M10 5.1a15 15 0 0 1 12 3.7"/><circle cx="12" cy="20" r=".6"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9h16M4 14h16"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18.5h2"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l2 2M15 8l2 2"/></symbol>
+    <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-contacts" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.5"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 6h5M16 10h5M18 14h3"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 3v9"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.3-5.7"/><path d="M4 4v4h4"/></symbol>
+    <symbol id="d-calc" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h.01M15.5 18h.01" stroke-width="2.4"/></symbol>
+    <symbol id="d-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01" stroke-width="2.4"/></symbol>
+    <symbol id="d-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="d-notes" viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5z"/><path d="M8 10h8M8 14h8M8 18h5"/></symbol>
+    <symbol id="d-locked" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></symbol>
+    <symbol id="d-broken" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18"/><path d="M9.5 12.5l5 5M14.5 12.5l-5 5"/></symbol>
+    <symbol id="d-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="d-convert" viewBox="0 0 24 24"><path d="M4 8h14l-3-3M20 16H6l3 3"/></symbol>
+    <symbol id="d-timer" viewBox="0 0 24 24"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9s8 4 8 9"/></symbol>
+    <symbol id="d-tip" viewBox="0 0 24 24"><path d="M6 18L18 6"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></symbol>
+    <symbol id="d-level" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="4"/><circle cx="12" cy="12" r="2"/><path d="M8 8v8M16 8v8"/></symbol>
+    <symbol id="d-flash" viewBox="0 0 24 24"><path d="M7 3h10v4l-2 3v11H9V10L7 7z"/><path d="M12 13v3"/></symbol>
+    <symbol id="d-docs" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="d-pdf" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><rect x="8.5" y="11" width="7" height="6" rx="1"/></symbol>
+    <symbol id="d-todo" viewBox="0 0 24 24"><path d="M4 6l1.5 1.5L8 5M4 12l1.5 1.5L8 11M4.5 18h3"/><path d="M11 6h9M11 12h9M11 18h9"/></symbol>
+    <symbol id="d-exp" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 8.5c-.6-.9-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.3 0 3.2 6 1.8 6 5 0 1.4-1.3 2.4-3 2.4-1.4 0-2.6-.6-3.1-1.6M12 5v2M12 17v2"/></symbol>
+    <symbol id="d-chess" viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><path d="M10 9h4l1 7H9z"/><path d="M8 16h8l1 4H7z"/></symbol>
+    <symbol id="d-piano" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M8 5v14M12 5v14M16 5v14"/><path d="M8 5v8M12 5v8M16 5v8" stroke-width="3.2"/></symbol>
+    <symbol id="d-metro" viewBox="0 0 24 24"><path d="M9 3h6l4 18H5z"/><path d="M12 17l4-10"/><path d="M7 17h10"/></symbol>
+    <symbol id="d-dice" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8.5 8.5h.01M15.5 8.5h.01M12 12h.01M8.5 15.5h.01M15.5 15.5h.01" stroke-width="2.6"/></symbol>
+    <symbol id="d-morse" viewBox="0 0 24 24"><path d="M3 8h.01M7 8h6M17 8h.01M3 16h6M13 16h.01M17 16h4" stroke-width="2.6"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<a class="quick-exit" id="quick-exit" href="https://en.wikipedia.org/wiki/Weather" rel="noreferrer" title="Leaves this site at once. You can also press Esc.">
+  <svg class="ic" aria-hidden="true"><use href="#i-x"/></svg><span>Leave quickly</span>
+</a>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="Ghost Protocol, back to top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c-6 0-10 4.5-10 10.5V28l3.3-2.4L12.7 28 16 25.6 19.3 28l3.4-2.4L26 28V13.5C26 7.5 22 3 16 3z" fill="currentColor"/><circle cx="12.5" cy="14" r="1.8" class="brand-eye"/><circle cx="19.5" cy="14" r="1.8" class="brand-eye"/></svg>
+      <span>Ghost Protocol</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#hide">Hiding apps</a>
+      <a href="#scenes">Real-life scenes</a>
+      <a href="#disguises">Disguises</a>
+      <a href="#encryption">Encryption</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#offer">Ghost Phone</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <p class="pill"><span class="pill-dot" aria-hidden="true"></span>Private vault for Android · fully offline</p>
+      <h1 class="hero-h1"><span class="h1-top">Looks like a</span>
+        <span class="rot-line"><span class="rot" data-rot>Calculator.</span></span>
+        <span class="h1-bot">Keeps your secrets.</span></h1>
+      <p class="lead">21 real, working apps hide one encrypted vault for your photos, notes and files. Show a fake vault when you're forced. Make whole apps vanish with one code. Ready-made on a secured Google Pixel, or as a licence for your own Android phone.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#hide"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>See how apps disappear</a>
+        <a class="btn btn-ghost" href="#offer">The Ghost Phone</a>
+      </div>
+      <ul class="trust-row">
+        <li><svg class="ic" aria-hidden="true"><use href="#i-offline"/></svg>No internet permission</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg>Keys in the phone's hardware</li>
+        <li><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>No accounts, no tracking</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual player" id="hero-phone">
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="screen" aria-hidden="true"></div>
+        </div>
+        <span class="float f1" aria-hidden="true"><svg class="ic"><use href="#i-chip"/></svg>256-bit encryption</span>
+        <span class="float f2" aria-hidden="true"><svg class="ic"><use href="#i-offline"/></svg>Never online</span>
+        <span class="float f3" aria-hidden="true"><svg class="ic"><use href="#i-box"/></svg>Decoy vaults</span>
+        <span class="float f4" aria-hidden="true"><svg class="ic"><use href="#i-layers"/></svg>Apps vanish</span>
+      </div>
+      <div class="hero-ctl">
+        <button type="button" class="round" data-prev aria-label="Previous disguise">‹</button>
+        <div class="hero-lbl" aria-live="polite">
+          <span class="hero-ic" data-icon></span>
+          <span><b data-name>Calculator</b><small data-count>1 of 21</small></span>
+        </div>
+        <button type="button" class="round" data-next aria-label="Next disguise">›</button>
+        <button type="button" class="round" data-play aria-label="Pause" data-state="pause"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers" aria-label="Ghost Protocol in numbers">
+  <div class="wrap numbers-inner">
+    <div class="st"><b data-to="21">21</b><small>working disguises</small></div>
+    <div class="st"><b data-to="4">4</b><small>secret PINs, each with its own job</small></div>
+    <div class="st"><b data-to="256" data-suffix="-bit">256-bit</b><small>encryption key for every vault</small></div>
+    <div class="st"><b>0</b><small>internet permissions</small></div>
+    <div class="st"><b data-to="41">41</b><small>languages</small></div>
+  </div>
+</section>
+
+<!-- STRONG POINTS -->
+<section class="section bento-section" id="why">
+  <div class="wrap">
+    <p class="kicker">Why Ghost Protocol</p>
+    <h2>Six things that set it apart</h2>
+    <p class="section-lead">Most privacy apps hope nobody looks. Ghost Protocol is built for the moment someone does.</p>
+    <div class="bento">
+      <a class="tile t-wide" href="#disguises">
+        <div class="tile-art art-apps" aria-hidden="true">
+          <span class="app a-teal"><svg class="ic"><use href="#d-calc"/></svg></span><span class="app a-red"><svg class="ic"><use href="#d-cal"/></svg></span><span class="app a-ink"><svg class="ic"><use href="#d-clock"/></svg></span><span class="app a-amber"><svg class="ic"><use href="#d-notes"/></svg></span><span class="app a-blue"><svg class="ic"><use href="#d-compass"/></svg></span><span class="app a-violet"><svg class="ic"><use href="#d-convert"/></svg></span><span class="app a-orange"><svg class="ic"><use href="#d-timer"/></svg></span>
+          <span class="app a-green"><svg class="ic"><use href="#d-tip"/></svg></span><span class="app a-lime"><svg class="ic"><use href="#d-level"/></svg></span><span class="app a-yellow"><svg class="ic"><use href="#d-flash"/></svg></span><span class="app a-blue"><svg class="ic"><use href="#d-docs"/></svg></span><span class="app a-red"><svg class="ic"><use href="#d-pdf"/></svg></span><span class="app a-teal"><svg class="ic"><use href="#d-todo"/></svg></span><span class="app a-green"><svg class="ic"><use href="#d-exp"/></svg></span>
+          <span class="app a-ink"><svg class="ic"><use href="#d-chess"/></svg></span><span class="app a-slate"><svg class="ic"><use href="#d-piano"/></svg></span><span class="app a-orange"><svg class="ic"><use href="#d-metro"/></svg></span><span class="app a-violet"><svg class="ic"><use href="#d-dice"/></svg></span><span class="app a-amber"><svg class="ic"><use href="#d-morse"/></svg></span><span class="app a-slate"><svg class="ic"><use href="#d-locked"/></svg></span><span class="app a-grey"><svg class="ic"><use href="#d-broken"/></svg></span>
+        </div>
+        <h3>Hides in plain sight</h3>
+        <p>21 disguises that really work. A calculator that calculates, a chess game you can play. Nobody looks twice.</p>
+      </a>
+      <a class="tile" href="#how">
+        <div class="tile-art art-decoy" aria-hidden="true"><span class="vcard real"><i></i><i></i><i></i></span><span class="vcard fake"><b>Vault</b><i></i><i></i><i></i></span></div>
+        <h3>A fake vault for when you're forced</h3>
+        <p>A decoy PIN opens a believable vault. Nothing on screen says it isn't the real one.</p>
+      </a>
+      <a class="tile" href="#hide">
+        <div class="tile-art art-vanish" aria-hidden="true"><span class="hi h0"><svg class="ic"><use href="#i-call"/></svg></span><span class="hi h3"><svg class="ic"><use href="#i-image"/></svg></span><span class="hi h7 gone"><svg class="ic"><use href="#i-contacts"/></svg></span><span class="hi h1"><svg class="ic"><use href="#i-note"/></svg></span></div>
+        <h3>Whole apps vanish</h3>
+        <p>One Lockdown code makes your hidden apps disappear: no icon, no notifications. Your passphrase brings them back.</p>
+      </a>
+      <a class="tile" href="#scenes">
+        <div class="tile-art art-call" aria-hidden="true"><span class="ring-ic"><svg class="ic"><use href="#i-call"/></svg></span></div>
+        <h3>A way out</h3>
+        <p>A fake incoming call gives you a reason to leave, and locks the vault at the same moment.</p>
+      </a>
+      <a class="tile" href="#encryption">
+        <div class="tile-art art-chip" aria-hidden="true"><span class="chip-ic"><svg class="ic"><use href="#i-chip"/></svg></span></div>
+        <h3>Keys in the security chip</h3>
+        <p>Your PIN data is sealed by the phone's hardware, so guesses can't be run on a fast computer.</p>
+      </a>
+      <a class="tile" href="#privacy">
+        <div class="tile-art art-off" aria-hidden="true"><span class="off-ic"><svg class="ic"><use href="#i-offline"/></svg></span></div>
+        <h3>It can't go online</h3>
+        <p>No internet permission, no account, no ads. We collect nothing, sell nothing, and see nothing.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<div class="status-band" role="note">
+  <div class="wrap status-inner">
+    <span class="status-badge">In testing</span>
+    <p>The app is built and tested on emulators and test phones. A real-phone test on Google Pixel and an independent security review come next, before it goes on sale.</p>
+  </div>
+</div>
+
+<!-- WHO -->
+<section class="section" id="who">
+  <div class="wrap">
+    <p class="kicker">Who it is for</p>
+    <h2>For people who can't always keep their phone to themselves</h2>
+    <p class="section-lead">Ordinary phone security assumes you are free to say no when someone asks to see your phone. Many people are not.</p>
+    <div class="cards cards-4">
+      <article class="card who">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+        <h3>People leaving abuse</h3>
+        <p>When a partner or family member knows your phone PIN, checks your messages or has installed a spy app.</p>
+      </article>
+      <article class="card who">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-press"/></svg></span>
+        <h3>Journalists</h3>
+        <p>Sources, notes and recordings that must stay private if the phone is taken or searched.</p>
+      </article>
+      <article class="card who">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+        <h3>Activists and travellers</h3>
+        <p>Checkpoints, borders and searches where you may be told to unlock your phone and hand it over.</p>
+      </article>
+      <article class="card who">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></span>
+        <h3>Anyone who needs privacy</h3>
+        <p>Your photos and private life, kept away from anyone who picks up your phone for a minute.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section section-alt" id="how">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2>Watch the vault open</h2>
+    <p class="section-lead">The calculator is a real calculator. Only one number, followed by =, does something else.</p>
+    <div class="demo">
+      <div class="player demo-player" id="demo-phone">
+        <div class="phone"><div class="screen" aria-hidden="true"></div></div>
+        <p class="player-cap" data-cap aria-live="polite"></p>
+      </div>
+      <ol class="demo-steps" data-steps="demo-phone">
+        <li data-step="1"><span class="step-num">1</span><div><h3>It looks ordinary</h3><p>Pick one of 21 working disguises. Anyone who opens it sees a normal app that really works.</p></div></li>
+        <li data-step="2"><span class="step-num">2</span><div><h3>Type your secret PIN</h3><p>Choose it in a short, guided setup. A wrong PIN just looks like normal use.</p></div></li>
+        <li data-step="3"><span class="step-num">3</span><div><h3>Press =</h3><p>Each disguise has its own secret way in: a key, a search, a tune, a hold.</p></div></li>
+        <li data-step="4"><span class="step-num">4</span><div><h3>Your vault opens</h3><p>Photos, videos, notes, voice memos, files, passwords, cards and contacts, all encrypted.</p></div></li>
+      </ol>
+    </div>
+
+    <div class="pins">
+      <div class="pins-head">
+        <h3>One app. Different PINs. Different outcomes.</h3>
+        <p>Nothing on screen ever says which PIN was typed.</p>
+      </div>
+      <div class="pin-cards">
+        <article class="pin-card p-main">
+          <span class="pin-code" aria-hidden="true">●●●● =</span>
+          <h4>Main PIN</h4>
+          <p>Opens your real vault.</p>
+        </article>
+        <article class="pin-card p-decoy">
+          <span class="pin-code" aria-hidden="true">●●●● =</span>
+          <h4>Decoy PIN <em>optional</em></h4>
+          <p>Opens a believable fake vault you can show when forced. Up to three.</p>
+        </article>
+        <article class="pin-card p-lock">
+          <span class="pin-code" aria-hidden="true">●●●● =</span>
+          <h4>Lockdown PIN <em>optional</em></h4>
+          <p>Quietly locks and hides everything, hidden apps included. Only your recovery passphrase brings it back.</p>
+        </article>
+        <article class="pin-card p-wipe">
+          <span class="pin-code" aria-hidden="true">●●●● =</span>
+          <h4>Wipe PIN <em>off by default</em></h4>
+          <p>Erases the whole phone, or only this app's data and hidden apps. It cannot be undone.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIDE APPS -->
+<section class="section" id="hide">
+  <div class="wrap">
+    <p class="kicker">How a PIN hides your apps</p>
+    <h2>One code, and your apps are gone</h2>
+    <p class="section-lead">Not just your photos: whole apps, like a messenger, can disappear from your phone and come back later with everything still in them. Here is exactly what happens.</p>
+    <div class="demo">
+      <div class="player demo-player" id="hide-phone">
+        <div class="phone"><div class="screen" aria-hidden="true"></div></div>
+        <p class="player-cap" data-cap aria-live="polite"></p>
+      </div>
+      <ol class="demo-steps" data-steps="hide-phone">
+        <li data-step="1"><span class="step-num">1</span><div><h3>Put apps in the hidden space</h3><p>From your vault, move apps such as a messenger or gallery into a separate, private space on the phone. They keep working normally.</p></div></li>
+        <li data-step="2"><span class="step-num">2</span><div><h3>Type your Lockdown PIN</h3><p>When you need to, type it into the disguise, just like a normal number. Nothing on screen gives it away.</p></div></li>
+        <li data-step="3"><span class="step-num">3</span><div><h3>They vanish</h3><p>The apps disappear: no icon, no notifications, not even in search. The vault locks, and your main PIN stops working too.</p></div></li>
+        <li data-step="4"><span class="step-num">4</span><div><h3>Bring them back</h3><p>When you are safe, your recovery passphrase restores everything, exactly as it was. Nothing is deleted.</p></div></li>
+      </ol>
+    </div>
+    <div class="explain">
+      <div>
+        <h3>What happens behind the scenes</h3>
+        <p>The hidden space is an Android <b>work profile</b>: a separate, encrypted area of the phone, made to look like an ordinary work profile. Lockdown tells Android to freeze it. A frozen app can't run, show an icon or send notifications. Its data stays on the phone, encrypted.</p>
+      </div>
+      <div>
+        <h3>Good to know</h3>
+        <p>This feature is still experimental. It works best on Google Pixel. Some phone makers limit work profiles, so on other phones test it first. A forensic expert with special tools can see that a hidden space exists, but can't read what's inside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENES -->
+<section class="section section-dark" id="scenes">
+  <div class="wrap">
+    <p class="kicker">Real-life scenes</p>
+    <h2>The moments it was built for</h2>
+    <p class="section-lead">Four short scenes. Pick one and watch what happens on the phone.</p>
+    <div class="scenes">
+      <div class="scene-tabs" role="tablist" aria-label="Choose a scene">
+        <button type="button" role="tab" data-story="home" aria-controls="story-phone">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg></span>
+          <span><b>Someone checks your phone</b><small>A partner or family member goes through it</small></span>
+        </button>
+        <button type="button" role="tab" data-story="border" aria-controls="story-phone">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+          <span><b>Forced to unlock it</b><small>At a checkpoint or a border</small></span>
+        </button>
+        <button type="button" role="tab" data-story="escape" aria-controls="story-phone">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-call"/></svg></span>
+          <span><b>You need a way out</b><small>A fake call to leave a tense moment</small></span>
+        </button>
+        <button type="button" role="tab" data-story="stolen" aria-controls="story-phone">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span>
+          <span><b>Your phone is stolen</b><small>Someone tries to break in</small></span>
+        </button>
+      </div>
+      <div class="player story-player" id="story-phone" role="tabpanel">
+        <div class="story-bars" data-bars aria-hidden="true"></div>
+        <div class="phone"><div class="screen" aria-hidden="true"></div></div>
+        <div class="story-foot">
+          <p class="player-cap" data-cap aria-live="polite"></p>
+          <button type="button" class="round" data-play aria-label="Pause" data-state="pause"></button>
+        </div>
+      </div>
+    </div>
+    <p class="note on-dark">Animated scenes for illustration. Lockdown hides your things; it does not destroy them. Wiping a phone in front of authorities can itself be a crime in some countries.</p>
+  </div>
+</section>
+
+<!-- DISGUISES -->
+<section class="section" id="disguises">
+  <div class="wrap">
+    <p class="kicker">21 disguises</p>
+    <h2>Pick the app nobody would look at twice</h2>
+    <p class="section-lead">Each one is a real, working app with its own secret way in. Tap one to see it. You can also change the home-screen icon and name.</p>
+
+    <div class="picker" id="picker">
+      <div class="picker-grid">
+        <div class="dg">
+          <h3>Everyday</h3>
+          <ul class="app-grid">
+            <li><button type="button" data-app="0"><span class="app a-teal"><svg class="ic" aria-hidden="true"><use href="#d-calc"/></svg></span>Calculator</button></li>
+            <li><button type="button" data-app="1"><span class="app a-red"><svg class="ic" aria-hidden="true"><use href="#d-cal"/></svg></span>Calendar</button></li>
+            <li><button type="button" data-app="2"><span class="app a-ink"><svg class="ic" aria-hidden="true"><use href="#d-clock"/></svg></span>Clock</button></li>
+            <li><button type="button" data-app="3"><span class="app a-amber"><svg class="ic" aria-hidden="true"><use href="#d-notes"/></svg></span>Notes</button></li>
+            <li><button type="button" data-app="4"><span class="app a-slate"><svg class="ic" aria-hidden="true"><use href="#d-locked"/></svg></span>Locked app</button></li>
+            <li><button type="button" data-app="5"><span class="app a-grey"><svg class="ic" aria-hidden="true"><use href="#d-broken"/></svg></span>Broken app</button></li>
+          </ul>
+        </div>
+        <div class="dg">
+          <h3>Tools</h3>
+          <ul class="app-grid">
+            <li><button type="button" data-app="6"><span class="app a-blue"><svg class="ic" aria-hidden="true"><use href="#d-compass"/></svg></span>Compass</button></li>
+            <li><button type="button" data-app="7"><span class="app a-violet"><svg class="ic" aria-hidden="true"><use href="#d-convert"/></svg></span>Converter</button></li>
+            <li><button type="button" data-app="8"><span class="app a-orange"><svg class="ic" aria-hidden="true"><use href="#d-timer"/></svg></span>Timer</button></li>
+            <li><button type="button" data-app="9"><span class="app a-green"><svg class="ic" aria-hidden="true"><use href="#d-tip"/></svg></span>Tip Calculator</button></li>
+            <li><button type="button" data-app="10"><span class="app a-lime"><svg class="ic" aria-hidden="true"><use href="#d-level"/></svg></span>Level</button></li>
+            <li><button type="button" data-app="11"><span class="app a-yellow"><svg class="ic" aria-hidden="true"><use href="#d-flash"/></svg></span>Flashlight</button></li>
+          </ul>
+        </div>
+        <div class="dg">
+          <h3>Work</h3>
+          <ul class="app-grid">
+            <li><button type="button" data-app="12"><span class="app a-blue"><svg class="ic" aria-hidden="true"><use href="#d-docs"/></svg></span>Docs</button></li>
+            <li><button type="button" data-app="13"><span class="app a-red"><svg class="ic" aria-hidden="true"><use href="#d-pdf"/></svg></span>PDF Reader</button></li>
+            <li><button type="button" data-app="14"><span class="app a-teal"><svg class="ic" aria-hidden="true"><use href="#d-todo"/></svg></span>To-do</button></li>
+            <li><button type="button" data-app="15"><span class="app a-green"><svg class="ic" aria-hidden="true"><use href="#d-exp"/></svg></span>Expenses</button></li>
+          </ul>
+        </div>
+        <div class="dg">
+          <h3>Fun</h3>
+          <ul class="app-grid">
+            <li><button type="button" data-app="16"><span class="app a-ink"><svg class="ic" aria-hidden="true"><use href="#d-chess"/></svg></span>Chess</button></li>
+            <li><button type="button" data-app="17"><span class="app a-slate"><svg class="ic" aria-hidden="true"><use href="#d-piano"/></svg></span>Piano</button></li>
+            <li><button type="button" data-app="18"><span class="app a-orange"><svg class="ic" aria-hidden="true"><use href="#d-metro"/></svg></span>Metronome</button></li>
+            <li><button type="button" data-app="19"><span class="app a-violet"><svg class="ic" aria-hidden="true"><use href="#d-dice"/></svg></span>Dice</button></li>
+            <li><button type="button" data-app="20"><span class="app a-amber"><svg class="ic" aria-hidden="true"><use href="#d-morse"/></svg></span>Morse Code</button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="picker-view">
+        <div class="player" id="picker-phone"><div class="phone"><div class="screen" aria-hidden="true"></div></div></div>
+        <div class="how-open" aria-live="polite">
+          <small>How to open your vault</small>
+          <b id="picker-name">Calculator</b>
+          <p id="picker-how">Type your PIN, then press =.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENCRYPTION -->
+<section class="section section-alt" id="encryption">
+  <div class="wrap">
+    <p class="kicker">The power of its encryption</p>
+    <h2>Even with your phone in hand, they get noise</h2>
+    <p class="section-lead">Everything in the vault is encrypted on the phone before it is saved. Try it below.</p>
+
+    <div class="enc-grid">
+      <div class="enc-card" id="enc">
+        <div class="enc-head">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-note"/></svg></span>
+          <small data-label>What you see in your vault</small>
+        </div>
+        <p class="enc-text" data-text>Meet Sara at 6pm. New address: 14 Olive Street, 2nd floor. Bring the documents.</p>
+        <button type="button" class="btn btn-primary" data-enc>Show what is stored</button>
+        <p class="fine">Illustration. Real stored data looks just as random.</p>
+      </div>
+
+      <div class="enc-card guess">
+        <div class="enc-head">
+          <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-timer"/></svg></span>
+          <small>How long would guessing take?</small>
+        </div>
+        <label for="pin-len" class="guess-label">PIN length: <b id="pin-len-out">6 digits</b></label>
+        <input type="range" id="pin-len" min="4" max="8" step="1" value="6">
+        <div class="guess-out">
+          <div><small>Possible PINs</small><b id="pin-count">1,000,000</b></div>
+          <div><small>To try them all through the phone</small><b id="pin-time">about 29 years</b></div>
+        </div>
+        <p class="fine">Your PIN data is sealed by the phone's security hardware, so guesses can't be run on a fast computer. Each one goes through the phone, which waits longer after every wrong try, up to 15 minutes. Only true for a PIN that is hard to guess: avoid 1234, birthdays or your phone's own PIN.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div><b>256-bit</b><small>AES-GCM key for each vault</small></div>
+      <div><b>210,000</b><small>rounds to turn a PIN into a key</small></div>
+      <div><b>0</b><small>internet permissions</small></div>
+      <div><b>32 MB</b><small>vault size, always, so it doesn't show how much you keep</small></div>
+    </div>
+
+    <div class="sec-grid">
+      <article class="sec-item">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-offline"/></svg></span>
+        <h3>It can't go online</h3>
+        <p>No internet permission, so Android won't let it send anything anywhere. No accounts, no servers. Backups and updates move only as files you choose.</p>
+      </article>
+      <article class="sec-item">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg></span>
+        <h3>Your PIN is never stored</h3>
+        <p>Each vault has its own random key. Your PIN unlocks that key; the PIN itself is kept nowhere.</p>
+      </article>
+      <article class="sec-item">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-box"/></svg></span>
+        <h3>Decoys can't be told apart</h3>
+        <p>Real and decoy vaults share one store of the same fixed size, so the stored data doesn't show whether a decoy exists.</p>
+      </article>
+      <article class="sec-item">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-tag"/></svg></span>
+        <h3>No name on the phone</h3>
+        <p>The words "Ghost Protocol" appear nowhere on the phone: not in the app name, the settings or the stored files.</p>
+      </article>
+    </div>
+
+    <div class="compare" role="table" aria-label="Typical vault apps compared with Ghost Protocol">
+      <div class="cmp-row cmp-head" role="row">
+        <span role="columnheader"><span class="sr">Question</span></span>
+        <span role="columnheader">Many vault apps</span>
+        <span role="columnheader">Ghost Protocol</span>
+      </div>
+      <div class="cmp-row" role="row">
+        <span role="rowheader">What it looks like</span>
+        <span role="cell"><svg class="ic no" aria-hidden="true"><use href="#i-x"/></svg>Obviously a vault</span>
+        <span role="cell"><svg class="ic yes" aria-hidden="true"><use href="#i-check"/></svg>One of 21 real, working apps</span>
+      </div>
+      <div class="cmp-row" role="row">
+        <span role="rowheader">When you're forced to open it</span>
+        <span role="cell"><svg class="ic no" aria-hidden="true"><use href="#i-x"/></svg>Nothing you can do</span>
+        <span role="cell"><svg class="ic yes" aria-hidden="true"><use href="#i-check"/></svg>Decoy vaults and a Lockdown PIN</span>
+      </div>
+      <div class="cmp-row" role="row">
+        <span role="rowheader">Internet and accounts</span>
+        <span role="cell"><svg class="ic no" aria-hidden="true"><use href="#i-x"/></svg>Often online, with an account</span>
+        <span role="cell"><svg class="ic yes" aria-hidden="true"><use href="#i-check"/></svg>No internet permission, no account</span>
+      </div>
+      <div class="cmp-row" role="row">
+        <span role="rowheader">What it protects</span>
+        <span role="cell"><svg class="ic no" aria-hidden="true"><use href="#i-x"/></svg>Mostly photos</span>
+        <span role="cell"><svg class="ic yes" aria-hidden="true"><use href="#i-check"/></svg>Photos, files, passwords and whole apps</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="section section-dark" id="privacy">
+  <div class="wrap">
+    <p class="kicker">Your data stays yours</p>
+    <h2>We collect nothing, sell nothing, and see nothing.</h2>
+    <p class="section-lead">Most phones and apps make money from what you do. Ghost Protocol is paid for, so there is nothing to sell. The app has no internet permission, and the coming phone software and VPN are designed to collect no data either.</p>
+    <div class="priv-grid">
+      <article class="priv">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></span>
+        <h3>No account, no ads, no tracking</h3>
+        <p>You never sign up. The app shows no ads and collects nothing about you. We have no servers that hold your vault.</p>
+      </article>
+      <article class="priv">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-offline"/></svg></span>
+        <h3>The vault can't go online</h3>
+        <p>The app has no internet permission. Your vault never leaves your phone unless you make a backup file yourself.</p>
+      </article>
+      <article class="priv">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span>
+        <h3>No Google account on the Ghost Phone</h3>
+        <p>The Ghost Phone runs a de-Googled system. No Google account is needed and no Google apps are installed unless you add them.</p>
+      </article>
+      <article class="priv">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg></span>
+        <h3>What we can't hide</h3>
+        <p>Your mobile network still sees your calls, texts and rough location; that is how phone networks work. Websites see what you do on them, and other apps follow their own rules.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="wrap">
+    <p class="kicker">Features</p>
+    <h2>Everything in one quiet app</h2>
+    <p class="section-lead">Things that usually take four or five separate apps, if they exist at all.</p>
+    <div class="cards cards-3">
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-call"/></svg></span>
+        <h3>Fake incoming call</h3>
+        <p>Set a call to ring in 5 seconds to 5 minutes. The vault locks at once and a plain call screen appears. No real call is made.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-layers"/></svg></span>
+        <h3>Hidden apps <span class="tag">Experimental</span></h3>
+        <p>Move whole apps, such as a messenger, into a separate space that looks like an ordinary work profile. In Lockdown they vanish.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg></span>
+        <h3>Intruder photos</h3>
+        <p>A wrong PIN on a locked app or your lock screen is recorded in the vault: when, which app, and a photo (if you allow the camera).</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span>
+        <h3>App locker</h3>
+        <p>Put a PIN on other apps you choose, like your gallery or messages, separate from your vault PIN.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-camera"/></svg></span>
+        <h3>Private camera</h3>
+        <p>An optional Camera icon whose photos are encrypted the moment they are taken, never saved to your gallery.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <h3>Privacy Checkup</h3>
+        <p>Looks for known spy apps and risky settings. It only reports, because removing a spy app can alert whoever installed it.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-timer"/></svg></span>
+        <h3>Erase if not opened</h3>
+        <p>Optional: if you don't open your vault for 3 to 30 days, its data and hidden apps are erased.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span>
+        <h3>Practice mode</h3>
+        <p>Try your Lockdown and wipe PINs safely for 10 minutes. Nothing happens, so you know what to do when it matters.</p>
+      </article>
+      <article class="card feature">
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-lang"/></svg></span>
+        <h3>41 languages</h3>
+        <p>Including Arabic, Persian, Urdu, Swahili and Hindi, with right-to-left layouts. Smaller languages are machine-assisted for now.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="section section-alt" id="offer">
+  <div class="wrap">
+    <p class="kicker">Get it</p>
+    <h2>The Ghost Phone: ready, secured, private</h2>
+    <p class="section-lead">The safest way to use Ghost Protocol is on a phone we set up for you. If you already have an Android phone, you can buy a licence instead.</p>
+
+    <div class="gp">
+      <div class="gp-visual">
+        <div class="player" id="gp-phone"><div class="phone"><div class="screen" aria-hidden="true"></div></div></div>
+      </div>
+      <div class="gp-body">
+        <span class="ribbon-inline">Recommended</span>
+        <h3>The Ghost Phone</h3>
+        <p class="offer-sub">A Google Pixel, set up and locked down before it reaches you</p>
+        <p class="gp-lead">The Pixel's built-in security chip and full-disk encryption protect your data. Our software adds the vault, the disguises and Lockdown on top.</p>
+        <ul class="checks two">
+          <li>Full-disk encryption, with keys held by the Pixel's Titan M2 security chip</li>
+          <li>Runs GrapheneOS, an independent, security-focused version of Android</li>
+          <li>No Google account, no ads, no apps you didn't choose</li>
+          <li>A duress PIN on the phone's own lock screen that erases the phone (a GrapheneOS feature)</li>
+          <li>Restarts itself after sitting locked, back to its most protected state</li>
+          <li>USB port blocked for data while the phone is locked</li>
+          <li>Ghost Protocol installed: disguise, vault, decoys, Lockdown and hidden apps</li>
+          <li>Built for the Pixel, where Ghost Protocol's features work best; you only choose your PINs</li>
+        </ul>
+        <p class="price">Price to be announced</p>
+      </div>
+    </div>
+
+    <div class="licence">
+      <div>
+        <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <h3>Ghost Protocol licence</h3>
+        <p class="offer-sub">For your own Android phone</p>
+        <p>Buy a licence and install the app yourself on any phone with Android 8.0 or newer. You download and install it at your own responsibility. We recommend a Google Pixel: on other makers some features, such as hidden apps, may be limited. Licence terms will be published before sales open.</p>
+        <p class="price">Price to be announced</p>
+      </div>
+      <div class="cmp-mini" role="table" aria-label="Ghost Phone compared with a licence">
+        <div class="cm-row cm-head" role="row"><span role="columnheader"><span class="sr">Feature</span></span><span role="columnheader">Ghost Phone</span><span role="columnheader">Licence</span></div>
+        <div class="cm-row" role="row"><span role="rowheader">Disguise, vault, decoys, Lockdown</span><span role="cell" class="y">Yes</span><span role="cell" class="y">Yes</span></div>
+        <div class="cm-row" role="row"><span role="rowheader">Hidden apps</span><span role="cell" class="y">Yes</span><span role="cell" class="m">Depends on your phone</span></div>
+        <div class="cm-row" role="row"><span role="rowheader">Duress PIN on the real lock screen</span><span role="cell" class="y">Yes</span><span role="cell" class="n">No</span></div>
+        <div class="cm-row" role="row"><span role="rowheader">De-Googled, hardened system</span><span role="cell" class="y">Yes</span><span role="cell" class="n">Your phone as it is</span></div>
+        <div class="cm-row" role="row"><span role="rowheader">Set up for you</span><span role="cell" class="y">Yes</span><span role="cell" class="m">You install it</span></div>
+      </div>
+    </div>
+
+    <div class="roadmap">
+      <h3>Where the Ghost Phone is going</h3>
+      <ol class="road">
+        <li class="now"><span class="road-tag">At launch</span><b>Pixel + GrapheneOS + Ghost Protocol</b><p>Set up, encrypted and tested before it ships.</p></li>
+        <li><span class="road-tag">Coming</span><b>Full Ghost Protocol software for Pixel</b><p>Ghost Protocol built into the phone itself: a duress PIN that opens a decoy phone, a hidden second phone inside the phone, and a wipe that always works.</p></li>
+        <li><span class="road-tag">Coming</span><b>Ghost VPN</b><p>To hide your internet activity from your Wi-Fi and mobile network, designed to keep no data about you. Not available yet.</p></li>
+      </ol>
+    </div>
+
+    <p class="note">Not on sale yet: sales open after the real-phone test and the independent security review. Ghost Protocol is not made by, or connected with, Google or the GrapheneOS project.</p>
+  </div>
+</section>
+
+<!-- LIMITS -->
+<section class="section" id="limits">
+  <div class="wrap">
+    <p class="kicker">Honest limits</p>
+    <h2>What it can't protect you from</h2>
+    <p class="section-lead">No app is unbreakable, and we will never claim this one is. Knowing the limits keeps you safer.</p>
+    <div class="limits">
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>A phone that is already compromised</h3><p>If the phone is rooted, runs a modified system, or has spyware that can see the screen while the vault is open, that software can see what you see. The Privacy Checkup looks for signs of this but can't promise to find everything.</p></div>
+      </article>
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>Someone watching you type</h3><p>If someone sees you type your PIN, they know it. Decoy and Lockdown PINs help here, but only if you use them.</p></div>
+      </article>
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>Copies stored elsewhere</h3><p>Cloud backups, photos already uploaded, chat backups or files sent to others are outside the phone. No wipe can erase them.</p></div>
+      </article>
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>A forensic examiner</h3><p>An expert with an unlocked phone and special tools can see that the app and the hidden apps space exist, even though the contents stay encrypted.</p></div>
+      </article>
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>Phone calls and the real lock screen</h3><p>Calls from the vault are normal calls, so your phone company has a record. And no app can read what you type on the phone's own lock screen; the app can only count failed unlocks.</p></div>
+      </article>
+      <article class="limit">
+        <svg class="ic" aria-hidden="true"><use href="#i-alert"/></svg>
+        <div><h3>Not yet independently reviewed</h3><p>The app has automated tests and internal security checks. An outside security review is planned before sale. Hidden apps and some lock-screen features have so far been tested only on emulators.</p></div>
+      </article>
+    </div>
+    <p class="legal">You are responsible for how you use the app and for following the laws where you are. Ghost Protocol is made to protect people against theft, snooping, spy apps and abuse, not to hide evidence of crimes.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="wrap faq-wrap">
+    <div class="faq-intro">
+      <p class="kicker">Questions</p>
+      <h2>Good to know</h2>
+      <p class="section-lead">Can't find your answer? Contact details are coming soon.</p>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>What happens if I forget my PIN?</summary>
+        <p>Your recovery passphrase (12 characters or more, chosen at setup) brings back access. Keep it written down somewhere away from the phone. Without the PIN and the passphrase, nobody can open the vault, including us.</p>
+      </details>
+      <details>
+        <summary>Can you see my data or reset my PIN?</summary>
+        <p>No. The app never connects to the internet and there are no accounts. Everything stays encrypted on your phone. We will never ask for your PINs or passphrase, and you should never share them.</p>
+      </details>
+      <details>
+        <summary>What if someone finds the app and tells me to open it?</summary>
+        <p>Use a decoy PIN to open a believable fake vault, or your Lockdown PIN to quietly hide everything. Nothing on screen says which PIN you typed. Practise first with Practice mode so it feels natural.</p>
+      </details>
+      <details>
+        <summary>Does it work on my phone?</summary>
+        <p>Any Android phone with Android 8.0 or newer. It works best on Google Pixel, then Samsung. Some makers, such as Xiaomi, Honor and Huawei, limit apps running in the background; the app walks you through the extra settings. iPhone is not supported.</p>
+      </details>
+      <details>
+        <summary>Why does it ask for permissions like Accessibility?</summary>
+        <p>Nothing is asked at install. Each permission is requested only when you turn on the feature that needs it (for example, the app locker needs Accessibility), with a screen explaining what it is for and what the app never does with it. Every one is optional.</p>
+      </details>
+      <details>
+        <summary>Will the wipe PIN delete everything?</summary>
+        <p>Only if you turn it on. You choose either a full factory reset of the phone, or only this app's data and hidden apps. It cannot be undone, and it doesn't reach copies in cloud backups.</p>
+      </details>
+      <details>
+        <summary>Should I buy the Ghost Phone or a licence?</summary>
+        <p>If your safety depends on it, choose the Ghost Phone: it is set up and hardened for you, on the phone Ghost Protocol works best on. A licence suits people who already have a recent Android phone, ideally a Pixel, and are comfortable installing an app from a file themselves.</p>
+      </details>
+      <details>
+        <summary>Will there be a VPN?</summary>
+        <p>Ghost VPN is coming, but not available yet. The vault app itself never goes online, so it doesn't need one. A VPN would protect what you do on the internet with your other apps.</p>
+      </details>
+      <details>
+        <summary>Is it on Google Play?</summary>
+        <p>Not at first. Some of its protections are not allowed on Google Play, so it is installed from a file. A lighter Play edition may come later.</p>
+      </details>
+      <details>
+        <summary>Is it safe to visit this website?</summary>
+        <p>This site has no cookies, trackers or analytics, and loads nothing from other companies. But your browser history will still show you visited. If someone checks your devices, use a private window, and use the "Leave quickly" button (or press Esc) if you need to.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="wrap final-inner">
+    <h2>Privacy that doesn't look like privacy.</h2>
+    <p>A phone that looks ordinary to everyone else, and keeps your real life for you alone.</p>
+    <div class="cta-row center">
+      <a class="btn btn-primary" href="#offer">See the Ghost Phone</a>
+      <a class="btn btn-glass" href="#scenes"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg>Watch the scenes</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></span>
+      <h2>Get in touch</h2>
+      <p>Contact details are coming soon. Organisations that support survivors, journalists or human-rights defenders will be able to reach us here.</p>
+      <p class="contact-placeholder">Email address to be added</p>
+      <p class="note">If you are in immediate danger, contact your local emergency number or a local support service.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3c-6 0-10 4.5-10 10.5V28l3.3-2.4L12.7 28 16 25.6 19.3 28l3.4-2.4L26 28V13.5C26 7.5 22 3 16 3z" fill="currentColor"/><circle cx="12.5" cy="14" r="1.8" class="brand-eye"/><circle cx="19.5" cy="14" r="1.8" class="brand-eye"/></svg>
+      <span>Ghost Protocol</span>
+    </a>
+    <p>An offline privacy vault for Android.</p>
+    <p><a href="#site-privacy">Website privacy</a></p>
+  </div>
+  <div class="wrap">
+    <div class="site-privacy" id="site-privacy">
+      <h2>Website privacy</h2>
+      <p>This website uses no cookies, no trackers and no analytics. It has no forms and loads nothing from other companies: every file comes from this site. The only outside link is the "Leave quickly" button, which opens a Wikipedia page.</p>
+      <p>Like every website, the company that hosts it may keep standard server logs (such as IP addresses and the time of a visit) for security. We don't use them to track or identify visitors, and we don't sell or share anything.</p>
+      <p>Your browser history will still show that you visited. If someone checks your devices, use a private window.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
