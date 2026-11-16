@@ -185,6 +185,13 @@
       return '<div class="homes"><div class="search dk">' + ic('i-search') + '<b>' + (o && o.q || 'Chat') + '</b></div>' +
         '<div class="noapps">' + ic('i-search') + '<b>No apps found</b><small>Nothing installed matches "' + (o && o.q || 'Chat') + '"</small></div></div>';
     },
+    vpn: function (o) {
+      var st = (o && o.st) || 'off';
+      var label = { off: 'NOT protected', wait: 'Connecting…', on: 'You are protected' }[st];
+      return bar('Ghost VPN') + '<div class="vpnapp ' + st + '"><span class="vbtn">' + ic('i-power') + '</span><b class="vst">' + label + '</b>' +
+        '<small class="mut">' + (st === 'off' ? 'Tap to connect' : st === 'wait' ? 'Reaching the server' : 'All apps go through the tunnel') + '</small>' +
+        '<div class="list vlist">' + row('Kill switch', '', '<span class="kon">ON</span>') + row('Account', '•••• •••• •••• ••••') + '</div></div>';
+    },
     passphrase: function () {
       return '<div class="pp"><span class="lk">' + ic('i-key') + '</span><b>Recovery passphrase</b><div class="field"><b>•••••••••••••••••</b></div><div class="btnx pr">Unlock</div></div>';
     }
@@ -386,6 +393,14 @@
     { s: 'home', o: { hl: true }, cap: 'Chat is back, with all its messages. Nothing was deleted.', step: 4, d: 4000 }
   ]);
 
+  /* ---------- Ghost VPN visual ---------- */
+  var vpnEl = document.getElementById('vpn-phone');
+  if (vpnEl) {
+    new Player(vpnEl, { loop: true }).load([
+      { s: 'vpn', o: { st: 'off' }, d: 2600 }, { s: 'vpn', o: { st: 'wait' }, d: 1600 }, { s: 'vpn', o: { st: 'on' }, d: 4200 }
+    ]);
+  }
+
   /* ---------- Ghost Phone visual ---------- */
   var gp = document.getElementById('gp-phone');
   if (gp) {
@@ -547,7 +562,7 @@
 
   /* ---------- Reveal on scroll ---------- */
   if (!reduce && 'IntersectionObserver' in window) {
-    var items = document.querySelectorAll('.section h2, .section .section-lead, .card, .tile, .pin-card, .limit, .priv, .sec-item, .road li, .st, .demo-steps li, .offer-card, .gp, .licence, .enc-card, .explain > div, .final-inner > *');
+    var items = document.querySelectorAll('.section h2, .section .section-lead, .card, .tile, .pin-card, .limit, .priv, .sec-item, .road li, .st, .vpn-feats li, .vh-col, .demo-steps li, .offer-card, .gp, .licence, .enc-card, .explain > div, .final-inner > *');
     var ro = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
@@ -558,5 +573,16 @@
       it.style.transitionDelay = ((r % 4) * 70) + 'ms';
       ro.observe(it);
     }
+    // Safety net: never leave something on screen hidden (e.g. after jumping to a #link)
+    function showVisible() {
+      var hidden = document.querySelectorAll('.reveal:not(.in)');
+      for (var v = 0; v < hidden.length; v++) {
+        var b = hidden[v].getBoundingClientRect();
+        if (b.top < window.innerHeight && b.bottom > 0) hidden[v].classList.add('in');
+      }
+    }
+    window.addEventListener('hashchange', function () { setTimeout(showVisible, 900); });
+    window.addEventListener('load', function () { setTimeout(showVisible, 1200); });
+    window.addEventListener('scroll', function () { clearTimeout(showVisible.t); showVisible.t = setTimeout(showVisible, 400); }, { passive: true });
   }
 })();

@@ -768,3 +768,38 @@ details p { color: var(--muted); margin: 0 0 20px; }
 .site-privacy h2 { font-size: 1.05rem; letter-spacing: 0; margin-bottom: 8px; color: var(--text); }
 .site-privacy p { margin: 0 0 8px; font-size: .88rem; }
 .footer-inner a:not(.brand) { color: var(--muted); }
+
+/* ---------- Ghost VPN ---------- */
+.soon { display: inline-block; margin-left: 8px; padding: 3px 10px; border-radius: 999px; background: #e0b46a; color: #1c1405; font-size: .72rem; letter-spacing: .06em; vertical-align: middle; }
+.vpn-section h2 { max-width: 22em; }
+.vpn-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 900px) { .vpn-grid { grid-template-columns: auto 1fr; gap: 64px; } }
+.vpn-visual { display: flex; justify-content: center; }
+.vpn-feats { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+@media (min-width: 640px) { .vpn-feats { grid-template-columns: 1fr 1fr; } }
+.vpn-feats li { display: flex; gap: 14px; background: var(--dark-surface); border: 1px solid var(--dark-line); border-radius: var(--radius); padding: 18px; }
+.vpn-feats .icon-badge { margin: 0; background: #1d3434; color: #7cc4b9; }
+.vpn-feats h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.vpn-feats p { color: var(--dark-muted); margin: 0; font-size: .94rem; }
+.vpn-honest { display: grid; gap: 16px; margin-top: 40px; }
+@media (min-width: 800px) { .vpn-honest { grid-template-columns: 1fr 1fr; } }
+.vh-col { border-radius: var(--radius); padding: 22px 24px; background: var(--dark-surface); border: 1px solid var(--dark-line); }
+.vh-col.yes { border-top: 3px solid #7cc4b9; }
+.vh-col.no { border-top: 3px solid #e0b46a; }
+.vh-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+.vh-col li { position: relative; padding-left: 26px; color: var(--dark-muted); font-size: .96rem; }
+.vh-col.yes li::before { content: ""; position: absolute; left: 3px; top: .5em; width: 11px; height: 6px; border-left: 2px solid #7cc4b9; border-bottom: 2px solid #7cc4b9; transform: rotate(-45deg); }
+.vh-col.no li::before { content: "!"; position: absolute; left: 4px; top: 0; color: #e0b46a; font-weight: 800; }
+/* VPN app screen inside the phone */
+.vpnapp { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 0 0; }
+.vbtn { width: 140px; height: 140px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: #9aa5ab; margin-bottom: 14px; transition: background .4s; }
+.vbtn .ic { width: 54px; height: 54px; stroke-width: 2.2; }
+.vpnapp.wait .vbtn { background: #e08a2e; animation: pulse-o 1.2s ease-out infinite; }
+.vpnapp.on .vbtn { background: #2e8b57; box-shadow: 0 0 0 10px rgba(46,139,87,.15), 0 0 40px 6px rgba(46,139,87,.35); }
+@keyframes pulse-o { 0% { box-shadow: 0 0 0 0 rgba(224,138,46,.5); } 100% { box-shadow: 0 0 0 26px rgba(224,138,46,0); } }
+.vst { font-size: 17px; }
+.vpnapp.off .vst { color: #56616c; }
+.vpnapp.wait .vst { color: #c06a12; }
+.vpnapp.on .vst { color: #237448; }
+.vlist { width: 100%; margin-top: auto; }
+.kon { font-size: 11px; font-weight: 800; color: #237448; }

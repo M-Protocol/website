@@ -24,8 +24,8 @@
 <meta name="twitter:description" content="An offline vault for Android, hidden inside 21 everyday apps. Decoy vaults, apps that vanish with one code, and nothing ever sent online.">
 <meta name="twitter:image" content="https://m-software.tech/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=6">
-<script src="site.js?v=7" defer></script>
+<link rel="stylesheet" href="styles.css?v=8">
+<script src="site.js?v=9" defer></script>
 </head>
 <body>
 
@@ -105,6 +105,7 @@
       <a href="#disguises">Disguises</a>
       <a href="#encryption">Encryption</a>
       <a href="#privacy">Privacy</a>
+      <a href="#vpn">Ghost VPN</a>
       <a href="#faq">FAQ</a>
       <a class="nav-cta" href="#offer">Ghost Phone</a>
     </nav>
@@ -558,6 +559,49 @@
   </div>
 </section>
 
+<!-- GHOST VPN -->
+<section class="section section-dark vpn-section" id="vpn">
+  <div class="wrap">
+    <p class="kicker">Ghost VPN <span class="soon">Coming soon</span></p>
+    <h2>Ghost Protocol protects what's on your phone. Ghost VPN will protect what leaves it.</h2>
+    <p class="section-lead">A separate app, in development, that sends all of your phone's internet traffic through an encrypted tunnel to our own servers. It isn't available yet.</p>
+
+    <div class="vpn-grid">
+      <div class="vpn-visual">
+        <div class="player" id="vpn-phone"><div class="phone"><div class="screen" aria-hidden="true"></div></div></div>
+      </div>
+      <ul class="vpn-feats">
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><div><h3>Your whole phone</h3><p>Every app's internet traffic goes through one encrypted tunnel, built on WireGuard, a modern and well-studied VPN technology.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg></span><div><h3>Servers that run from memory</h3><p>Our VPN servers are designed to run from memory only, with no logs and no traffic stored. Switching one off wipes it.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg></span><div><h3>No email, no name</h3><p>Your account is a random 16-digit number. Paying by cash or crypto is planned, as well as by card; we never see card numbers.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><div><h3>Kill switch and private lookups</h3><p>If the tunnel drops, Android can block the internet so nothing slips out. Website lookups stay inside the tunnel.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span><div><h3>Open code, outside audit</h3><p>The app's code will be published for anyone to check, and an independent security audit is planned before launch.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="vpn-honest">
+      <div class="vh-col yes">
+        <h3>What a VPN does</h3>
+        <ul>
+          <li>Hides the sites you visit from your Wi-Fi owner and your internet or mobile provider</li>
+          <li>Hides your real internet address from the websites you visit</li>
+          <li>Protects you on public Wi-Fi in cafés, hotels and airports</li>
+        </ul>
+      </div>
+      <div class="vh-col no">
+        <h3>What it can't do</h3>
+        <ul>
+          <li>While you're connected, our servers carry your traffic. Every VPN works this way; we're designed never to store it.</li>
+          <li>It doesn't make you anonymous. Sites you log in to still know it's you.</li>
+          <li>It can't help if the phone itself has spy software. For that, see the Privacy Checkup and the Ghost Phone.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="note on-dark">Ghost Protocol itself stays fully offline and never uses the VPN; they are two separate apps. Prices and server locations will be announced before launch.</p>
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section class="section" id="features">
   <div class="wrap">
@@ -667,7 +711,7 @@
       <ol class="road">
         <li class="now"><span class="road-tag">At launch</span><b>Pixel + GrapheneOS + Ghost Protocol</b><p>Set up, encrypted and tested before it ships.</p></li>
         <li><span class="road-tag">Coming</span><b>Full Ghost Protocol software for Pixel</b><p>Ghost Protocol built into the phone itself: a duress PIN that opens a decoy phone, a hidden second phone inside the phone, and a wipe that always works.</p></li>
-        <li><span class="road-tag">Coming</span><b>Ghost VPN</b><p>To hide your internet activity from your Wi-Fi and mobile network, designed to keep no data about you. Not available yet.</p></li>
+        <li><span class="road-tag">Coming</span><b>Ghost VPN</b><p>A separate app that protects your whole phone's internet traffic, designed to keep no data about you. <a href="#vpn">More about Ghost VPN</a></p></li>
       </ol>
     </div>
 
@@ -750,7 +794,7 @@
       </details>
       <details>
         <summary>Will there be a VPN?</summary>
-        <p>Ghost VPN is coming, but not available yet. The vault app itself never goes online, so it doesn't need one. A VPN would protect what you do on the internet with your other apps.</p>
+        <p>Ghost VPN is coming soon as a separate app; it isn't available yet. Ghost Protocol itself never goes online and never uses the VPN. Ghost VPN will protect what your other apps do on the internet. <a href="#vpn">See what it will and won't do</a>.</p>
       </details>
       <details>
         <summary>Is it on Google Play?</summary>
