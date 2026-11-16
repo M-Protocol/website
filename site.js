@@ -561,7 +561,8 @@
   }
 
   /* ---------- Reveal on scroll ---------- */
-  if (!reduce && 'IntersectionObserver' in window) {
+  // Skip the slide-in effect when the page is opened at a #section link, so nothing can start hidden.
+  if (!reduce && !location.hash && 'IntersectionObserver' in window) {
     var items = document.querySelectorAll('.section h2, .section .section-lead, .card, .tile, .pin-card, .limit, .priv, .sec-item, .road li, .st, .vpn-feats li, .vh-col, .demo-steps li, .offer-card, .gp, .licence, .enc-card, .explain > div, .final-inner > *');
     var ro = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });

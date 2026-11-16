@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
 <meta name="color-scheme" content="light dark">
 <meta name="description" content="Ghost Protocol is an offline Android vault disguised as one of 21 everyday apps, built for people whose phone may be checked or taken.">
 <title>Ghost Protocol</title>
@@ -24,8 +25,8 @@
 <meta name="twitter:description" content="An offline vault for Android, hidden inside 21 everyday apps. Decoy vaults, apps that vanish with one code, and nothing ever sent online.">
 <meta name="twitter:image" content="https://m-software.tech/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=8">
-<script src="site.js?v=9" defer></script>
+<link rel="stylesheet" href="styles.css?v=9">
+<script src="site.js?v=10" defer></script>
 </head>
 <body>
 
@@ -533,7 +534,7 @@
   <div class="wrap">
     <p class="kicker">Your data stays yours</p>
     <h2>We collect nothing, sell nothing, and see nothing.</h2>
-    <p class="section-lead">Most phones and apps make money from what you do. Ghost Protocol is paid for, so there is nothing to sell. The app has no internet permission, and the coming phone software and VPN are designed to collect no data either.</p>
+    <p class="section-lead">Most phones and apps make money from what you do. Ghost Protocol is paid for, so there is nothing to sell. The app has no internet permission, Ghost VPN keeps no activity logs, and the phone software coming next is designed to collect no data either.</p>
     <div class="priv-grid">
       <article class="priv">
         <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></span>
@@ -562,9 +563,9 @@
 <!-- GHOST VPN -->
 <section class="section section-dark vpn-section" id="vpn">
   <div class="wrap">
-    <p class="kicker">Ghost VPN <span class="soon">Coming soon</span></p>
-    <h2>Ghost Protocol protects what's on your phone. Ghost VPN will protect what leaves it.</h2>
-    <p class="section-lead">A separate app, in development, that sends all of your phone's internet traffic through an encrypted tunnel to our own servers. It isn't available yet.</p>
+    <p class="kicker">Ghost VPN</p>
+    <h2>Ghost Protocol protects what's on your phone. Ghost VPN protects what leaves it.</h2>
+    <p class="section-lead">Ghost VPN protects all your phone's internet traffic. It's a separate app that sends everything your apps do online through an encrypted tunnel to our own servers, with one tap.</p>
 
     <div class="vpn-grid">
       <div class="vpn-visual">
@@ -572,10 +573,10 @@
       </div>
       <ul class="vpn-feats">
         <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg></span><div><h3>Your whole phone</h3><p>Every app's internet traffic goes through one encrypted tunnel, built on WireGuard, a modern and well-studied VPN technology.</p></div></li>
-        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg></span><div><h3>Servers that run from memory</h3><p>Our VPN servers are designed to run from memory only, with no logs and no traffic stored. Switching one off wipes it.</p></div></li>
-        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg></span><div><h3>No email, no name</h3><p>Your account is a random 16-digit number. Paying by cash or crypto is planned, as well as by card; we never see card numbers.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg></span><div><h3>No activity logs</h3><p>Our servers don't record the sites you visit, your real internet address or when you connect. Your traffic passes through and is not stored.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-key"/></svg></span><div><h3>No email, no name</h3><p>Your account is a random 16-digit number. We never ask for your name, email or phone number, and you can delete your account at any time.</p></div></li>
         <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-lock"/></svg></span><div><h3>Kill switch and private lookups</h3><p>If the tunnel drops, Android can block the internet so nothing slips out. Website lookups stay inside the tunnel.</p></div></li>
-        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span><div><h3>Open code, outside audit</h3><p>The app's code will be published for anyone to check, and an independent security audit is planned before launch.</p></div></li>
+        <li><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span><div><h3>Built to be checked</h3><p>Licensed as open-source software (GPL), with no homemade encryption and no tracking or analytics built in. Built to be audited.</p></div></li>
       </ul>
     </div>
 
@@ -591,14 +592,15 @@
       <div class="vh-col no">
         <h3>What it can't do</h3>
         <ul>
-          <li>While you're connected, our servers carry your traffic. Every VPN works this way; we're designed never to store it.</li>
+          <li>While you're connected, our servers carry your traffic. Every VPN works this way; we don't store it.</li>
           <li>It doesn't make you anonymous. Sites you log in to still know it's you.</li>
           <li>It can't help if the phone itself has spy software. For that, see the Privacy Checkup and the Ghost Phone.</li>
         </ul>
       </div>
     </div>
 
-    <p class="note on-dark">Ghost Protocol itself stays fully offline and never uses the VPN; they are two separate apps. Prices and server locations will be announced before launch.</p>
+    <div class="vpn-cta"><a class="btn btn-glass" href="#contact">Ask us about Ghost VPN</a></div>
+    <p class="note on-dark">Ghost Protocol itself stays fully offline and never uses the VPN; they are two separate apps.</p>
   </div>
 </section>
 
@@ -711,7 +713,7 @@
       <ol class="road">
         <li class="now"><span class="road-tag">At launch</span><b>Pixel + GrapheneOS + Ghost Protocol</b><p>Set up, encrypted and tested before it ships.</p></li>
         <li><span class="road-tag">Coming</span><b>Full Ghost Protocol software for Pixel</b><p>Ghost Protocol built into the phone itself: a duress PIN that opens a decoy phone, a hidden second phone inside the phone, and a wipe that always works.</p></li>
-        <li><span class="road-tag">Coming</span><b>Ghost VPN</b><p>A separate app that protects your whole phone's internet traffic, designed to keep no data about you. <a href="#vpn">More about Ghost VPN</a></p></li>
+        <li><span class="road-tag">Ask us</span><b>Ghost VPN</b><p>A separate app that protects your whole phone's internet traffic and keeps no activity logs. <a href="#vpn">More about Ghost VPN</a></p></li>
       </ol>
     </div>
 
@@ -793,8 +795,8 @@
         <p>If your safety depends on it, choose the Ghost Phone: it is set up and hardened for you, on the phone Ghost Protocol works best on. A licence suits people who already have a recent Android phone, ideally a Pixel, and are comfortable installing an app from a file themselves.</p>
       </details>
       <details>
-        <summary>Will there be a VPN?</summary>
-        <p>Ghost VPN is coming soon as a separate app; it isn't available yet. Ghost Protocol itself never goes online and never uses the VPN. Ghost VPN will protect what your other apps do on the internet. <a href="#vpn">See what it will and won't do</a>.</p>
+        <summary>Is there a VPN?</summary>
+        <p>Ghost VPN is a separate app; ask us about it. Ghost Protocol itself never goes online and never uses the VPN. Ghost VPN protects what your other apps do on the internet. <a href="#vpn">See what it does and doesn't do</a>.</p>
       </details>
       <details>
         <summary>Is it on Google Play?</summary>

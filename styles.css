@@ -803,3 +803,5 @@ details p { color: var(--muted); margin: 0 0 20px; }
 .vpnapp.on .vst { color: #237448; }
 .vlist { width: 100%; margin-top: auto; }
 .kon { font-size: 11px; font-weight: 800; color: #237448; }
+
+.vpn-cta { margin-top: 28px; text-align: center; }
