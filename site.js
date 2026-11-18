@@ -1,4 +1,4 @@
-/* Ghost Protocol site: animated phone demos. No network, no storage, no tracking. */
+/* M-Software site (Ghost Vault, Ghost VPN, Ghost Chat): animated phone demos. No network, no storage, no tracking. */
 (function () {
   'use strict';
 
@@ -191,6 +191,18 @@
       return bar('Ghost VPN') + '<div class="vpnapp ' + st + '"><span class="vbtn">' + ic('i-power') + '</span><b class="vst">' + label + '</b>' +
         '<small class="mut">' + (st === 'off' ? 'Tap to connect' : st === 'wait' ? 'Reaching the server' : 'All apps go through the tunnel') + '</small>' +
         '<div class="list vlist">' + row('Kill switch', '', '<span class="kon">ON</span>') + row('Account', '•••• •••• •••• ••••') + '</div></div>';
+    },
+    chat: function (o) {
+      var n = (o && o.n) || 0, msgs = [
+        ['in', 'Are you safe to talk?'],
+        ['out', 'Yes. Using Ghost Chat now'],
+        ['in', 'Good. This one disappears in 1 hour'],
+        ['out', 'Got it \u2714']
+      ], b = '';
+      for (var i = 0; i < n && i < msgs.length; i++) b += '<div class="bub-' + msgs[i][0] + '">' + msgs[i][1] + '</div>';
+      return '<div class="chat-top"><span class="av-s">K</span><div><b>K7M2Q-X9D4R</b><small>' + ic('i-lock') + ' End-to-end encrypted</small></div></div>' +
+        '<div class="chat-body"><p class="chat-note">' + ic('i-timer') + ' Disappearing messages: 1 hour</p>' + b + '</div>' +
+        '<div class="chat-input"><span>Message</span><i>' + ic('i-chat') + '</i></div>';
     },
     passphrase: function () {
       return '<div class="pp"><span class="lk">' + ic('i-key') + '</span><b>Recovery passphrase</b><div class="field"><b>•••••••••••••••••</b></div><div class="btnx pr">Unlock</div></div>';
@@ -401,6 +413,15 @@
     ]);
   }
 
+  /* ---------- Ghost Chat visual ---------- */
+  var chatEl = document.getElementById('chat-phone');
+  if (chatEl) {
+    new Player(chatEl, { loop: true }).load([
+      { s: 'chat', o: { n: 0 }, d: 1400 }, { s: 'chat', o: { n: 1 }, d: 1600 }, { s: 'chat', o: { n: 2 }, d: 1600 },
+      { s: 'chat', o: { n: 3 }, d: 1800 }, { s: 'chat', o: { n: 4 }, d: 3200 }
+    ]);
+  }
+
   /* ---------- Ghost Phone visual ---------- */
   var gp = document.getElementById('gp-phone');
   if (gp) {
@@ -563,7 +584,7 @@
   /* ---------- Reveal on scroll ---------- */
   // Skip the slide-in effect when the page is opened at a #section link, so nothing can start hidden.
   if (!reduce && !location.hash && 'IntersectionObserver' in window) {
-    var items = document.querySelectorAll('.section h2, .section .section-lead, .card, .tile, .pin-card, .limit, .priv, .sec-item, .road li, .st, .vpn-feats li, .vh-col, .demo-steps li, .offer-card, .gp, .licence, .enc-card, .explain > div, .final-inner > *');
+    var items = document.querySelectorAll('.section h2, .section .section-lead, .card, .tile, .pin-card, .limit, .priv, .sec-item, .road li, .st, .vpn-feats li, .vh-col, .app-card, .demo-steps li, .offer-card, .gp, .licence, .enc-card, .explain > div, .final-inner > *');
     var ro = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });

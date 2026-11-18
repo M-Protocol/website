@@ -1,4 +1,4 @@
-/* Ghost Protocol site. System fonts only; nothing is loaded from other sites. */
+/* M-Software site (Ghost Vault, Ghost VPN, Ghost Chat). System fonts only; nothing is loaded from other sites. */
 :root {
   --bg: #f6f7f4;
   --bg-alt: #eceff0;
@@ -805,3 +805,78 @@ details p { color: var(--muted); margin: 0 0 20px; }
 .kon { font-size: 11px; font-weight: 800; color: #237448; }
 
 .vpn-cta { margin-top: 28px; text-align: center; }
+
+/* ---------- Three apps (top of page) ---------- */
+.apps-hero {
+  position: relative; overflow: hidden; padding: 56px 0 64px; color: #eef2f0;
+  background:
+    radial-gradient(55% 60% at 80% 10%, rgba(124,196,185,.22), transparent 70%),
+    radial-gradient(45% 55% at 5% 95%, rgba(91,111,168,.22), transparent 70%),
+    linear-gradient(180deg, #0a1114 0%, #0e171b 100%);
+}
+@media (min-width: 960px) { .apps-hero { padding: 80px 0 88px; } }
+.apps-hero .pill { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); color: #c9d4d7; }
+.apps-hero .pill-dot { background: #7cc4b9; box-shadow: 0 0 0 4px rgba(124,196,185,.2); }
+.apps-h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); letter-spacing: -0.035em; line-height: 1.05; max-width: 14em; margin-bottom: 18px; }
+.apps-lead { color: #aebbc0 !important; max-width: 40em; }
+.apps-grid { position: relative; display: grid; gap: 18px; margin-top: 40px; }
+@media (min-width: 900px) { .apps-grid { grid-template-columns: repeat(3, 1fr); } }
+.app-card {
+  position: relative; display: flex; flex-direction: column; padding: 26px; border-radius: 22px;
+  background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.12);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.app-card:hover { transform: translateY(-4px); border-color: var(--c, #7cc4b9); }
+.app-card.reveal.in:hover { transform: translateY(-4px); }
+.c-vault { --c: #7cc4b9; } .c-vpn { --c: #9aaee6; } .c-chat { --c: #e0b46a; }
+.app-ic { width: 52px; height: 52px; border-radius: 15px; display: grid; place-items: center; background: var(--c); color: #0b1215; margin-bottom: 16px; }
+.app-ic .ic { width: 26px; height: 26px; stroke-width: 2; }
+.app-card h2 { font-size: 1.6rem; margin-bottom: 4px; }
+.app-tag { color: var(--c); font-weight: 650; margin-bottom: 16px; }
+.app-card .checks li { color: #c3cdd1; font-size: .96rem; }
+.app-card .checks li::before { border-color: var(--c); }
+.app-limit { margin: 18px 0 20px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.1); color: #9fadb3; font-size: .88rem; }
+.app-limit b { color: #c9d4d7; }
+.app-cta { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.app-cta .btn { padding: 11px 18px; font-size: .95rem; }
+.apps-hero .btn-primary { background: var(--c, #7cc4b9); color: #0b1215; box-shadow: none; }
+.apps-hero .btn-ghost { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); color: #eef2f0; }
+.future-strip {
+  position: relative; display: flex; align-items: center; gap: 14px; margin-top: 18px; padding: 16px 20px; border-radius: 16px;
+  background: rgba(255,255,255,.03); border: 1px dashed rgba(255,255,255,.2); color: #c9d4d7; text-decoration: none;
+}
+.future-strip:hover { border-color: #e0b46a; }
+.future-strip b { color: #eef2f0; }
+.future-strip .soon { margin: 0; flex: none; }
+.future-strip .arrow { margin-left: auto; color: #e0b46a; font-weight: 700; }
+#vault.hero { border-top: 1px solid rgba(255,255,255,.06); }
+
+/* ---------- Ghost Chat section (light background) ---------- */
+.vpn-feats.light li { background: var(--surface); border-color: var(--line); }
+.vpn-feats.light .icon-badge { background: var(--accent-soft); color: var(--accent); }
+.vpn-feats.light p { color: var(--muted); }
+.vpn-honest.light .vh-col { background: var(--surface); border-color: var(--line); }
+.vpn-honest.light .vh-col li { color: var(--muted); }
+.vpn-honest.light .vh-col.yes { border-top-color: var(--accent); }
+.vpn-honest.light .vh-col.yes li::before { border-color: var(--accent); }
+.vpn-honest.light .vh-col.no li::before { color: var(--warn); }
+.vpn-honest.light .vh-col.no { border-top-color: var(--warn); }
+/* chat screen in the phone */
+.scr-chat { background: #eef1f0; }
+.chat-top { display: flex; align-items: center; gap: 10px; padding: 6px 14px 10px; background: #fbfbfa; border-bottom: 1px solid #e3e7e8; }
+.chat-top b { display: block; font-size: 13px; letter-spacing: .03em; }
+.chat-top small { display: flex; align-items: center; gap: 4px; color: #2b6f67; font-size: 10px; font-weight: 600; }
+.chat-top small .ic { width: 10px; height: 10px; }
+.av-s { width: 32px; height: 32px; border-radius: 50%; background: #e0b46a; color: #1c1405; display: grid; place-items: center; font-weight: 800; }
+.chat-body { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+.chat-note { align-self: center; display: flex; align-items: center; gap: 5px; margin: 0 0 6px; padding: 4px 10px; border-radius: 999px; background: #dfe5e4; color: #56616c; font-size: 10px; }
+.chat-note .ic { width: 11px; height: 11px; }
+.bub-in, .bub-out { max-width: 78%; padding: 8px 12px; border-radius: 16px; font-size: 12.5px; animation: bub .35s ease-out; }
+.bub-in { align-self: flex-start; background: #fff; border-bottom-left-radius: 5px; }
+.bub-out { align-self: flex-end; background: #2b6f67; color: #fff; border-bottom-right-radius: 5px; }
+@keyframes bub { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
+.chat-input { display: flex; align-items: center; gap: 8px; margin: 8px 12px 16px; padding: 8px 8px 8px 14px; border-radius: 999px; background: #fff; color: #9aa5ab; }
+.chat-input span { flex: 1; }
+.chat-input i { width: 30px; height: 30px; border-radius: 50%; background: #2b6f67; color: #fff; display: grid; place-items: center; }
+.chat-input .ic { width: 15px; height: 15px; }
