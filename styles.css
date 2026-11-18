@@ -880,3 +880,56 @@ details p { color: var(--muted); margin: 0 0 20px; }
 .chat-input span { flex: 1; }
 .chat-input i { width: 30px; height: 30px; border-radius: 50%; background: #2b6f67; color: #fff; display: grid; place-items: center; }
 .chat-input .ic { width: 15px; height: 15px; }
+
+/* ---------- Language switch (Arabic / English) ---------- */
+.header-inner { justify-content: flex-start; }
+.brand { margin-inline-end: auto; }
+.lang-switch {
+  flex: none; display: inline-flex; align-items: center; gap: 2px; padding: 3px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--surface); text-decoration: none; font-size: .86rem; line-height: 1.2;
+}
+.lang-switch span { padding: 5px 11px; border-radius: 999px; color: var(--muted); }
+.lang-switch span.on { background: var(--accent); color: var(--on-accent); font-weight: 650; }
+.lang-switch:hover span:not(.on), .lang-switch:focus-visible span:not(.on) { color: var(--text); background: var(--accent-soft); }
+@media (max-width: 860px) {
+  .lang-switch { order: 1; }
+  .nav { order: 2; }
+}
+
+/* ---------- Arabic: right-to-left layout ---------- */
+html[lang="ar"] body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, "Noto Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", Arial, sans-serif; line-height: 1.75; }
+/* Letter-spacing breaks joined Arabic letters, and Arabic has no capitals */
+html[lang="ar"] *, html[lang="ar"] *::before, html[lang="ar"] *::after { letter-spacing: 0 !important; text-transform: none !important; }
+html[lang="ar"] .pin-code, html[lang="ar"] .pp .field b, html[lang="ar"] .search b { letter-spacing: .15em !important; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3, html[lang="ar"] h4 { line-height: 1.35; }
+html[lang="ar"] .hero-h1, html[lang="ar"] .apps-h1, html[lang="ar"] .final-inner h2 { line-height: 1.25; }
+html[lang="ar"] .kicker, html[lang="ar"] .dg h3, html[lang="ar"] .how-open small, html[lang="ar"] .enc-head small { font-size: .9rem; }
+
+[dir="rtl"] .skip { left: auto; right: -9999px; }
+[dir="rtl"] .skip:focus { right: 8px; }
+[dir="rtl"] .quick-exit { right: auto; left: 12px; padding: 10px 12px 10px 16px; }
+[dir="rtl"] .nav .nav-cta { margin-left: 0; margin-right: 6px; }
+[dir="rtl"] .hero-lbl { padding: 6px 6px 6px 14px; }
+[dir="rtl"] .scene-tabs button, [dir="rtl"] .story-foot .player-cap { text-align: right; }
+[dir="rtl"] .ribbon { right: auto; left: 22px; }
+[dir="rtl"] .checks li { padding-left: 0; padding-right: 28px; }
+[dir="rtl"] .checks li::before { left: auto; right: 4px; }
+[dir="rtl"] .vh-col li { padding-left: 0; padding-right: 26px; }
+[dir="rtl"] .vh-col.yes li::before { left: auto; right: 3px; }
+[dir="rtl"] .vh-col.no li::before { left: auto; right: 4px; }
+[dir="rtl"] .legal { border-left: 0; padding-left: 0; border-right: 3px solid var(--warn); padding-right: 14px; }
+[dir="rtl"] summary { padding: 18px 0 18px 40px; }
+[dir="rtl"] summary::after { right: auto; left: 8px; }
+[dir="rtl"] .tag { margin-left: 0; margin-right: 4px; }
+[dir="rtl"] .soon { margin-left: 0; margin-right: 8px; }
+[dir="rtl"] .future-strip .soon { margin: 0; }
+[dir="rtl"] .future-strip .arrow { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .tile::after { content: "\2190"; right: auto; left: 22px; transform: translateX(6px); }
+[dir="rtl"] .bub-in { border-bottom-left-radius: 16px; border-bottom-right-radius: 5px; }
+[dir="rtl"] .bub-out { border-bottom-right-radius: 16px; border-bottom-left-radius: 5px; }
+[dir="rtl"] .chat-input { padding: 8px 14px 8px 8px; }
+/* Keypads, boards and dials keep their usual left-to-right order inside the phone */
+[dir="rtl"] .calc, [dir="rtl"] .pad, [dir="rtl"] .dots, [dir="rtl"] .board, [dir="rtl"] .keys, [dir="rtl"] .tube,
+[dir="rtl"] .tg, [dir="rtl"] .bigt, [dir="rtl"] .hclock, [dir="rtl"] .dice, [dir="rtl"] .pin-code, [dir="rtl"] .field.mono b { direction: ltr; }
+[dir="rtl"] .cd { text-align: right; }
+[dir="rtl"] .tile:hover::after { transform: none; }
